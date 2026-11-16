@@ -4,3 +4,4 @@ PROMPT1 = ("answer as a plain text, meaning: without hashtags and asterisks, you
 PROMPT2 = PROMPT1
 PROMPT3 = PROMPT1
 PROMPT_LIST = [PROMPT1, PROMPT2, PROMPT3]
+TEXT_DIVISION_PROMPT = ""
