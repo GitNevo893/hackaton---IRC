@@ -1,2 +1,2 @@
-prompt_dict = {
+PROMPT_DICT = {
 }
