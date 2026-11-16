@@ -4,4 +4,4 @@ PROMPT1 = ("answer as a plain text, meaning: without hashtags and asterisks, you
 PROMPT2 = PROMPT1
 PROMPT3 = PROMPT1
 PROMPT_LIST = [PROMPT1, PROMPT2, PROMPT3]
-TEXT_DIVISION_PROMPT = "after answering make a copy of the answer before omitting the said words. write between every word in the copy and every punctuation mark in the copy add _"
+TEXT_DIVISION_PROMPT = "make a copy of the answer above (which is supposed to be the exact previous answer). replace the space between every word in the copy with '_', and between every punctuation mark in the copy insert '_'"
