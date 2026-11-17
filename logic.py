@@ -17,23 +17,13 @@ def complete(client):
         full_answer_divided = full_answer.split()
 
         initial_response = imperfect_response(client, full_answer, current_prompt)
+
         missing_words = missing_words_list(initial_response)
         show_response(initial_response)
 
         for response_word in range(0, len(initial_response)):
             if initial_response[response_word] == "XXX":
-                user_completion = input("complete the missing: ")
-                print()
-                if user_completion in missing_words: # and full_answer_divided[response_word] == user_completion:
-                    if full_answer_divided[response_word] == user_completion:
-                        initial_response[response_word] = user_completion
-                        missing_words.remove(user_completion)
-                        response_missing_words_update(initial_response, user_message)
-                        show_response(initial_response)
-                    else:
-                        print("this one doesnt quite fit here...")
-                else:
-                    print("try to use the list of missing words.")
+                initial_response = completion_check(initial_response, missing_words, full_answer_divided, response_word, user_message)
 
 
 def response_missing_words_update(initial_response, user_message):
@@ -42,6 +32,7 @@ def response_missing_words_update(initial_response, user_message):
             initial_response.pop(word)
         elif initial_response[word] == "words:" and initial_response[word - 1] == "missing":
             break
+    return initial_response
 
 def show_response(initial_response):
     sentence_counter = 0
@@ -80,6 +71,25 @@ def imperfect_response(client, full_answer, current_prompt):
                   ]
     )
     initial_response = response.text.split()
+    return initial_response
+
+def completion_check(initial_response, missing_words, full_answer_divided, response_word, user_message):
+
+    correct_attempt = False
+    while correct_attempt == False:
+        user_completion = input("complete the missing: ")
+        print()
+        if user_completion in missing_words:
+            if full_answer_divided[response_word] == user_completion:
+                initial_response[response_word] = user_completion
+                missing_words.remove(user_completion)
+                initial_response = response_missing_words_update(initial_response, user_message)
+                show_response(initial_response)
+                correct_attempt = True
+            else:
+                print("this one doesnt quite fit here...")
+        else:
+            print("try to use the list of missing words.")
     return initial_response
 
 def completion_review(user_completion, missing_words):
