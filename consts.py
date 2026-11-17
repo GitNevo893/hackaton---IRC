@@ -1,4 +1,4 @@
-PROMPT1 = ("this is a prompt regarding the given text: copy the text given as is, analyze it and then omit the words that you consider important for learning the material—words that aren't too complex, such that the missing term can be guessed(using context), the list should be a simple word under word with no punctuation marks.\n"
+PROMPT1 = ("this is a prompt regarding the given text: copy the text given as is, analyze it and then omit 8 words that you consider important for learning the material—words that aren't too complex, such that the missing term can be guessed(using context), the list should be a simple word under word with no punctuation marks.\n"
            "Locate the missing words with the string XXX.\n"
            "provide a list of the words you removed, not in order. title the list: 'missing words:'.\n"
            "for further clarification, this response will be used in a python .split() function, so this prompt should make it that the index of a 'XXX' value in the splited response would stay the same index of the original word in the original text split-list.")
